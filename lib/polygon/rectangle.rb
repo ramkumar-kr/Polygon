@@ -6,6 +6,6 @@ class Polygon::Rectangle
 	end
 
 	def perimeter
-		"#{(@side_a.value + @side_b.value) * 2} mm"
+		(@side_a + @side_b) * 2
 	end
 end
