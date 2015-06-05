@@ -4,16 +4,16 @@ describe Polygon::Length do
 
 	context 'Equality' do
 
-		it "should be the same when 690 centimeters is compared with 6.45 meters" do
+		it "should not be the same when 690 centimeters is compared with 6.45 meters" do
 			length1 = Polygon::Length.new(6.45, Polygon::Length::METER)
 			length2 = Polygon::Length.new(690, Polygon::Length::CENTIMETER)
-			expect(length2).to eq(length1)
+			expect(length2).to_not eq(length1)
 		end
 
-		it "should not be the same when 645 centimeters is compared with 6.45 meters" do
+		it "should be the same when 645 centimeters is compared with 6.45 meters" do
 			length1 = Polygon::Length.new(6.45, Polygon::Length::METER)
 			length2 = Polygon::Length.new(645, Polygon::Length::CENTIMETER)
-			expect(length2).to_not eq(length1)
+			expect(length2).to eq(length1)
 		end
 
 		it "should not be the same when 690 centimeters is compared with an Object" do
@@ -24,7 +24,7 @@ describe Polygon::Length do
 	end
 
 	context 'Hash' do
-		it " should be the same for 2 objects having equivalent values" do
+		it " should be the same for 2 objects having same values" do
 			length1 = Polygon::Length.new(6.45, Polygon::Length::METER)
 			length2 = Polygon::Length.new(645, Polygon::Length::CENTIMETER)
 			expect(length1.hash).to eq(length2.hash)
@@ -50,6 +50,14 @@ describe Polygon::Length do
 			length2 = Polygon::Length.new(240, Polygon::Length::MILLIMETER)
 			length3 = Polygon::Length.new(60, Polygon::Length::CENTIMETER)
 			expect(length1 + length2).to eq(length3)
+		end
+	end
+
+	context 'Multiplication' do
+		it "should return a length object of 60 centimeters when a length object of 20 centimeters is multiplied with 3" do
+			length1 = Polygon::Length.new(20, Polygon::Length::CENTIMETER)
+			length2 = Polygon::Length.new(60, Polygon::Length::CENTIMETER)
+			expect(length1 * 3).to eq(length2)
 		end
 	end
 

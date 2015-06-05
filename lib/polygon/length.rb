@@ -4,18 +4,18 @@ class Polygon::Length
 	METER = 1000
 	CENTIMETER = 10
 	MILLIMETER = 1
-	include Comparable
-
+	
 	def initialize(length,unit)
 		@unit = unit
 		@value = length
 	end
 
 	def in_millimeters
-		@unit * @value
+		(@unit * @value).to_i
 	end
 
 	def ==(other_length)
+		return false if self.class != other_length.class
 		in_millimeters == other_length.in_millimeters
 	end
 
@@ -27,4 +27,8 @@ class Polygon::Length
 		Polygon::Length.new(other_length.in_millimeters + in_millimeters, MILLIMETER)
 	end
 
+	def *(number)
+		Polygon::Length.new(in_millimeters * number, MILLIMETER)
+	end
+	alias :eql? :==  
 end
