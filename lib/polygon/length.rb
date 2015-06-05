@@ -1,4 +1,4 @@
-# Represents a side in a Polygon
+# Represents the measure of a side in a Polygon
 class Polygon::Length
 	attr_reader :value
 	
