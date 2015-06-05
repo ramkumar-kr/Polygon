@@ -15,9 +15,12 @@ class Polygon::Length
 		@unit * @value
 	end
 
-	def <=>(other_length)
-		return nil if other_length.class != self.class
-		in_millimeters <=> other_length.in_millimeters
+	def ==(other_length)
+		in_millimeters == other_length.in_millimeters
+	end
+
+	def hash
+		in_millimeters.hash
 	end
 
 	def +(other_length)
